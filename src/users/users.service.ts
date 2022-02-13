@@ -25,7 +25,7 @@ export class UsersService {
     blockUser(id: string) {
         /* TODO: block user in DB */
         const userIdx = this.users.findIndex((user) => user.id === id);
-        this.users.splice(1, userIdx);
+        this.users.splice(userIdx, 1);
         /* end block user */
 
         return true;

@@ -23,3 +23,9 @@
 ## DTO, DAO
 
 -   spring 개념과 같음
+
+## Pipe가 뭔데?
+
+-   middleware 개념. data transformation, validation을 함
+-   handler, parameter, global level에서 pipe 사용 가능
+    -   각각 controlller, parameter, main.ts에서 사용됨
