@@ -16,4 +16,8 @@ export class AuthService {
 
         return user;
     }
+
+    async validateRequest(request: Request): Promise<boolean> {
+        return true;
+    }
 }

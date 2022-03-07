@@ -5,9 +5,13 @@ import {
     Param,
     Patch,
     Post,
+    UseGuards,
     UsePipes,
     ValidationPipe,
 } from '@nestjs/common';
+// import { AuthGuard } from '@nestjs/passport';
+
+import { AuthGuard } from '@guards/auth.guard';
 import { CreateUserDto } from './dto/createUser.dto';
 import { User, UserStatus } from './users.model';
 import { UsersService } from './users.service';
@@ -16,6 +20,7 @@ import { UsersService } from './users.service';
 export class UsersController {
     constructor(private usersService: UsersService) {}
 
+    @UseGuards(AuthGuard)
     @Post('/create')
     @UsePipes(ValidationPipe)
     createUser(@Body() createUserDto: CreateUserDto): User {

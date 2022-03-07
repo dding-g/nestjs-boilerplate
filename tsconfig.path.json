@@ -4,7 +4,8 @@
         "paths": {
             "@root/*": ["./src/*"],
             "@auth/*": ["./src/auth/*"],
-            "@users/*": ["./src/users/*"]
+            "@users/*": ["./src/users/*"],
+            "@guards/*": ["./src/guards/*"]
         }
     }
 }
