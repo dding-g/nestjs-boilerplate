@@ -29,3 +29,4 @@
 -   middleware 개념. data transformation, validation을 함
 -   handler, parameter, global level에서 pipe 사용 가능 - 각각 controlller, parameter, main.ts에서 사용됨
     [참고](https://sumini.dev/guide/019-nestjs-directory-structure/)
+-   [class-validator](https://github.com/typestack/class-validator) : handler, parameter, global 레벨 사용 가능, [class-transformer](https://github.com/typestack/class-transformer)

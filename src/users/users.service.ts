@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { User, UserStatus } from './users.model';
 import { CreateUserDto } from './dto/createUser.dto';
 
@@ -39,6 +39,10 @@ export class UsersService {
         const activeUsers = this.users.filter(
             (user) => user.status === UserStatus.ACTIVE,
         );
+
+        if (activeUsers.length === 0) {
+            throw new NotFoundException();
+        }
 
         return activeUsers;
     }
