@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { CreateUserDto } from './dto/createUser.dto';
-import { User } from './users.model';
+import { User, UserStatus } from './users.model';
 import { UsersService } from './users.service';
 
 @Controller('users')
@@ -9,13 +9,16 @@ export class UsersController {
 
     @Post('/create')
     createUser(@Body() createUserDto: CreateUserDto): User {
-        console.log({ createUserDto });
         return this.usersService.createUser(createUserDto);
     }
 
+    // @Param()은 전체 param 가져옴.
     @Patch('/block/:id')
-    blockUser(@Param('id') id: string): boolean {
-        return this.usersService.blockUser(id);
+    updateBlockUser(
+        @Param('id') id: string,
+        @Body('status') status: UserStatus,
+    ): boolean {
+        return this.usersService.updateBlockUser(id, status);
     }
 
     @Get()

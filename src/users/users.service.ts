@@ -22,16 +22,24 @@ export class UsersService {
         return user;
     }
 
-    blockUser(id: string) {
+    updateBlockUser(id: string, status: UserStatus) {
         /* TODO: block user in DB */
         const userIdx = this.users.findIndex((user) => user.id === id);
-        this.users.splice(userIdx, 1);
+        const isUser = userIdx > -1;
+
+        if (isUser) {
+            this.users[userIdx].status = status;
+        }
         /* end block user */
 
-        return true;
+        return isUser;
     }
 
     getUsers(): User[] {
-        return this.users;
+        const activeUsers = this.users.filter(
+            (user) => user.status === UserStatus.ACTIVE,
+        );
+
+        return activeUsers;
     }
 }
